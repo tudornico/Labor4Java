@@ -1,11 +1,15 @@
 package Repo;
 
+import Uni.Course;
 import Uni.IMemoryRepository;
 import Uni.Student;
 import org.json.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
@@ -30,7 +34,8 @@ public class StudentFileRepository extends IMemoryRepository<Student> implements
         return Jsonresult;
     }
     @Override
-    public void getFromFile() throws IOException {
+    //ToDO test method
+    public void WriteInFIle() throws IOException {
         JSONArray objectList = new JSONArray();
         
         
@@ -40,15 +45,39 @@ public class StudentFileRepository extends IMemoryRepository<Student> implements
             objectList.put(createJson(student));
         }
 
-        FileWriter fileWriter =  new FileWriter("StudentFIle.json");
-        fileWriter.write(String.valueOf(objectList));
+        FileWriter fileWriter =  new FileWriter("StudentFile.json");
+        for (Object obj:objectList
+             ) {
+            fileWriter.write(String.valueOf(obj));
+            fileWriter.write('\n');
+
+        }
         fileWriter.flush();
-        //TODO manage toJsonString error
+
+
     }
 
     @Override
-    //TODO Update the repository file into the studentList
-    public void retrieve() throws IOException, ClassNotFoundException {
+    //TODO Test method
+    public void retrieve() throws IOException, ClassNotFoundException, ParseException {
+        JSONParser parser = new JSONParser();
+        FileReader reader = new FileReader("StudentFIle.json");
+        Object obj = parser.parse(reader);
+        //obj contains the list of json objects idk how to cast to json array
+        JSONArray array = new JSONArray();
+        array.put(obj);
+        System.out.println(array);
+        JSONObject parsingObject = new JSONObject();
+        Student parsingStudent = new Student("","",0,null);
+        for(int index=0;index<array.length();index++){
+            parsingObject = array.getJSONObject(index);
+            parsingStudent.setFirstname(parsingObject.getString("First Name : "));
+            parsingStudent.setLastname(parsingObject.getString("Last Name : "));
+            parsingStudent.setTotalCredits(parsingObject.getInt("Total Credits : "));
+            parsingStudent.setStudentId(parsingObject.getInt("Id : "));
+            parsingStudent.setEnrolledCourses((List<Course>) parsingObject.get("COurses enrolled : "));
+            this.studentList.add(parsingStudent);
+        }
 
     }
 

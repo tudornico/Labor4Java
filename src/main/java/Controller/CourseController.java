@@ -2,6 +2,7 @@ package Controller;
 
 import Repo.CourseFileRepository;
 import Uni.Course;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,10 +16,10 @@ public class CourseController {
 
 
     public void getFromFile() throws IOException {
-        this.repr.getFromFile();
+        this.repr.WriteInFIle();
     }
 
-    public void retrieve() throws IOException, ClassNotFoundException {
+    public void retrieve() throws IOException, ClassNotFoundException, ParseException {
         this.repr.retrieve();
     }
 

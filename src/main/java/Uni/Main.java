@@ -3,19 +3,19 @@ package Uni;
 
 
 import Repo.StudentFileRepository;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Main {
 
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Student s1 =new Student("Tudor","Nicolaescu",60,null);
-        List<Student> studentList = new ArrayList<>();
-        studentList.add(s1);
-        StudentFileRepository repr = new StudentFileRepository(studentList);
-        repr.getFromFile();
+    public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
+
+        StudentFileRepository repository = new StudentFileRepository(null);
+        repository.retrieve();
     }
 }

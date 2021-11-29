@@ -1,8 +1,8 @@
 package Controller;
 
 import Repo.StudentFileRepository;
-import Uni.Course;
 import Uni.Student;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,10 +17,10 @@ public class StudentController {
     }
 
     public void getFromFile() throws IOException {
-        this.repr.getFromFile();
+        this.repr.WriteInFIle();
     }
 
-    public void retrieve() throws IOException, ClassNotFoundException {
+    public void retrieve() throws IOException, ClassNotFoundException, ParseException {
         this.repr.retrieve();
     }
 
