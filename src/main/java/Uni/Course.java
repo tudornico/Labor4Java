@@ -8,18 +8,18 @@ import java.util.List;
  */
 public class Course implements Serializable {
     private String name;
-    private Person teacher;
-    private int maxEnrollment;
-    private int credits;
+    private Teacher teacher;
+    private long maxEnrollment;
+    private long credits;
     private List<Student> studentsEnrolled;
-    private static int counter =0;
-    private int ID;
+    private static  long counter =0;
+    private long ID;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(long ID) {
         this.ID = ID;
     }
 
@@ -31,7 +31,7 @@ public class Course implements Serializable {
      * @param credits the amount of credits the course has
      * @param studentsEnrolled the list of students currently tqking the course
      */
-    public Course(String name, Person teacher, int maxEnrollment, int credits, List<Student> studentsEnrolled) {
+    public Course(String name, Teacher teacher, long maxEnrollment, long credits, List<Student> studentsEnrolled) {
         this.name = name;
         this.teacher = teacher;
         this.maxEnrollment = maxEnrollment;
@@ -49,27 +49,27 @@ public class Course implements Serializable {
         this.name = name;
     }
 
-    public Person getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Person teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
-    public int getMaxEnrollment() {
+    public long getMaxEnrollment() {
         return maxEnrollment;
     }
 
-    public void setMaxEnrollment(int maxEnrollment) {
+    public void setMaxEnrollment(long maxEnrollment) {
         this.maxEnrollment = maxEnrollment;
     }
 
-    public int getCredits() {
+    public long getCredits() {
         return credits;
     }
 
-    public void setCredits(int credits) {
+    public void setCredits(long credits) {
         this.credits = credits;
     }
 

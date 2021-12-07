@@ -33,6 +33,14 @@ public class Teacher extends Person implements Serializable {
         this.courses = courses;
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     @Override
     public String toString() {
         return "Teacher{" +
